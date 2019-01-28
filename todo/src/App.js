@@ -13,7 +13,7 @@ class App extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.updateNewTodo = this.updateNewTodo.bind(this);
   }
-  
+
   addTodo(event) {
     event.preventDefault();
     this.props.addTodo({
@@ -31,6 +31,28 @@ class App extends Component {
     });
   }
 
+  render() {
+    return (
+      <div className="App">
+        <form onSubmit={this.addTodo}>
+          <input onChange={this.updateNewTodo} placeholder="new todo" value={this.state.newTodo} />
+        </form>
+        <TodoList todos={this.props.todos} />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addTodo }
+)(App);
 
 
 
