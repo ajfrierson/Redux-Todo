@@ -13,6 +13,7 @@ class App extends Component {
     this.addTodo = this.addTodo.bind(this);
     this.updateNewTodo = this.updateNewTodo.bind(this);
   }
+  
   addTodo(event) {
     event.preventDefault();
     this.props.addTodo({
@@ -21,6 +22,12 @@ class App extends Component {
     });
     this.setState({
       newTodo: ''
+    });
+  }
+
+  updateNewTodo(event) {
+    this.setState({
+      newTodo: event.target.value
     });
   }
 
